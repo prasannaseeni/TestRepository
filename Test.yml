@@ -1,0 +1,22 @@
+---
+- name: Test Playbook
+  hosts: all
+  gather_facts: false
+  tasks:
+          - name: To create a folder
+            file:
+                    path: /home/ansible/Prasanna_Test
+                    state: directory
+          - name: Copy files
+            copy: 
+                    src: /var/lib/jenkins/workspace/Ansible_Demo/index.html
+                    dest: /var/lib/tomcat9/webapps/MyApps/index.html
+          - name: Restarting tomcat9
+            service:
+                    name: tomcat9
+                    state: restarted
+            become: yes
+            become_user: root
+            
+                    
+
