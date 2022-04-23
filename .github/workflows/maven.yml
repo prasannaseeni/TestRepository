@@ -6,12 +6,13 @@ name: Java CI with Maven
 on:
   push:
     branches: [ main ]
-
+workflow_dispatch:
 
 jobs:
   build:
 
     runs-on: self-hosted
+    label: Ubuntu_SonarQube
 
     steps:
     - uses: actions/checkout@v3
