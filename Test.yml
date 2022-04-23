@@ -1,5 +1,5 @@
 ---
-- name: Test Playbook
+- name: Test Playbook 1
   hosts: all
   gather_facts: false
   tasks:
