@@ -27,3 +27,6 @@ jobs:
      
     - name: Build with Maven
       run: mvn -B package --file single-module/pom.xml
+      
+    - name: To run a command in linux machine
+      run: mkdir /home/ubuntu/GitHubActions
