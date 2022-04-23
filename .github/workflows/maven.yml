@@ -14,7 +14,7 @@ jobs:
 
     runs-on: 
         - self-hosted
-        - Ubuntu_SonarQube
+        - Tomcat
  
 
     steps:
