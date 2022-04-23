@@ -27,9 +27,6 @@ jobs:
      
     - name: Build with Maven
       run: mvn -B package --file single-module/pom.xml
-      
-    - name: To run a command in linux machine
-      run: mkdir /home/ubuntu/GitHubActions
-      
+           
     - name: To copy files to apache tomcat
       run: cp /var/lib/jenkins/workspace/Ansible_Demo/index.html /var/lib/tomcat9/webapps/MyApps/
