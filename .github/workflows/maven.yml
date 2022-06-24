@@ -32,8 +32,8 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file single-module/pom.xml
            
-    - name: To copy files to apache tomcat
-      run: cp /home/ubuntu/actions-runner/Ubuntu_Apache/TestRepository/TestRepository/index.html /var/lib/tomcat9/webapps/MyApps/
+   # - name: To copy files to apache tomcat
+   #   run: cp /home/ubuntu/actions-runner/Ubuntu_Apache/TestRepository/TestRepository/index.html /var/lib/tomcat9/webapps/MyApps/
       
     - name: To check the runners
-      run: mkdir /home/ubuntu/Runner1
+      run: mkdir /home/ubuntu/Runner2
