@@ -8,6 +8,11 @@ on:
     branches: [ main ]
  
   workflow_dispatch:
+     inputs:
+       dir_name:
+         description: To get the directory name
+         required: true
+         default: Runner2
 
 jobs:
   build:
