@@ -41,4 +41,4 @@ jobs:
    #   run: cp /home/ubuntu/actions-runner/Ubuntu_Apache/TestRepository/TestRepository/index.html /var/lib/tomcat9/webapps/MyApps/
       
     - name: To check the runners
-      run: echo "${{ github.event.inputs.dirname }}"
+      run: echo "Hello ${{ github.event.inputs.dirname }}"
