@@ -16,9 +16,8 @@ on:
 jobs:
   build:
 
-    runs-on: 
-        - self-hosted
-        - Runner2
+    runs-on: ubuntu-latest
+       
  
 
     steps:
