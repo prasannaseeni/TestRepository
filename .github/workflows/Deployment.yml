@@ -29,7 +29,9 @@ on:
 jobs:
   
   deploy:
-    runs-on: Runner2
+    runs-on: 
+        - Runner2
+        - self-hosted
         
     steps:
       - name: Download artifact from build job
