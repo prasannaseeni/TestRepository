@@ -35,7 +35,7 @@ jobs:
       - name: Download artifact from build job
         uses: ./
         with:
-          workflow: xxx.yml
+          workflow: maven.yml
           name: warfile
           
 
