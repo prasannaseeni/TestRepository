@@ -35,7 +35,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Download artifact from build job
-        uses: ./
+        uses: dawidd6/action-download-artifact@v2
         with:
           workflow: maven.yml
           name: warfile
