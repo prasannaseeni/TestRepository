@@ -40,3 +40,9 @@ jobs:
       
     - name: To check the runners
       run: echo "Hello ${{ github.event.inputs.dirname }}"
+      
+    - name: upload artifact for deployment job
+      uses: actions/upload-artifact@v2
+      with:
+        name: warfile
+        path: target/
