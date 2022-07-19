@@ -38,6 +38,7 @@ jobs:
         with:
           workflow: maven.yml
           name: warfile
+          path: artifacts/
           
 
    
