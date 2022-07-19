@@ -29,7 +29,7 @@ on:
 jobs:
   
   deploy:
-    runs-on: Runner2
+    runs-on: Runner3
         
     steps:
       - name: Checkout
