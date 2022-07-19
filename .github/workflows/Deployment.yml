@@ -29,9 +29,7 @@ on:
 jobs:
   
   deploy:
-    runs-on: 
-        - Runner2
-        - self-hosted
+    runs-on: ubuntu-latest
         
     steps:
       - name: Download artifact from build job
