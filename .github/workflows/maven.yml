@@ -3,9 +3,6 @@
 
 name: Java CI with Maven
 
-env: 
-  build_version: "${{ github.run_number }}"
-
 on:
 
  
@@ -15,6 +12,9 @@ on:
          description: To get the directory name
          required: true
          default: 2.0."$GITHUB_RUN_NUMBER"
+env:
+  input_version: ${{ github.event.inputs.dirname }}
+   
 
 jobs:
   Build:
