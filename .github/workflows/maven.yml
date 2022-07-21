@@ -11,7 +11,7 @@ on:
        dirname:
          description: To get the directory name
          required: true
-         default: Runner2
+         default: ${{ github.run_number }}
 
 jobs:
   Build:
@@ -60,5 +60,8 @@ jobs:
         with:
           name: warfile
           path: newartifact
+          
+      - name: To create directory
+        run: mkdir ${{ github.event.inputs.dirname }}"
           
       
