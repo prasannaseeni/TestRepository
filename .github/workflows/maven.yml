@@ -20,10 +20,8 @@ jobs:
   Build:
 
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.dirname }} == 2.0."$GITHUB_RUN_NUMBER"
-       
+          
  
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
@@ -63,8 +61,8 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: warfile
-          path: newartifact
+          name: devwarfile
+          path: devartifact
       
       - name: To create directory
         run: mkdir "${{ github.event.inputs.dirname }}"
@@ -72,5 +70,32 @@ jobs:
        
       - name: To get env values
         run: env
+        
+      - name: upload artifact for deployment job
+        uses: actions/upload-artifact@v3
+        with:
+          name: sitwarfile
+          path: single-module/GitHubActionsTesting
+ 
+ 
+  DeployToSIT:
+  
+    runs-on: Runner3
+    environment: SIT
+    needs: DeployToDev
+    
+    steps: 
+    
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: sitwarfile
+          path: sitartifact
+      
+      - name: To create directory
+        run: mkdir "${{ github.event.inputs.dirname }}"
           
+       
+      - name: To get env values
+        run: env
       
