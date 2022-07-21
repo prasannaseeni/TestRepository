@@ -61,8 +61,8 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: devwarfile
-          path: devartifact
+          name: warfile
+          path: buildartifact
       
       - name: To create directory
         run: mkdir "${{ github.event.inputs.dirname }}"
@@ -74,7 +74,7 @@ jobs:
       - name: upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
-          name: sitwarfile
+          name: devwarfile
           path: single-module/GitHubActionsTesting
  
  
@@ -89,8 +89,8 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: sitwarfile
-          path: sitartifact
+          name: devwarfile
+          path: devartifact
       
       - name: To create directory
         run: mkdir "${{ github.event.inputs.dirname }}"
