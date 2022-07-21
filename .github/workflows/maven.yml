@@ -14,7 +14,7 @@ on:
        dirname:
          description: To get the directory name
          required: true
-         default: Runner2
+         default: $GITHUB_RUN_NUMBER
 
 jobs:
   Build:
