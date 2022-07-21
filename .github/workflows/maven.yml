@@ -63,6 +63,9 @@ jobs:
         with:
           name: warfile
           path: newartifact
+      
+      - name: To create directory
+        run: mkdir "${{ github.event.inputs.dirname }}"
           
        
       - name: To get env values
