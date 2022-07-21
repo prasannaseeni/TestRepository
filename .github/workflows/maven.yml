@@ -14,7 +14,7 @@ on:
          default: Runner2
 
 jobs:
-  build:
+  Build:
 
     runs-on: ubuntu-latest
        
@@ -42,7 +42,22 @@ jobs:
       run: echo "Hello ${{ github.event.inputs.dirname }}"
       
     - name: upload artifact for deployment job
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: warfile
         path: single-module/GitHubActionsTesting
+        
+        
+  DeployToDev:
+  
+    runs-on: Runner3
+    
+    steps: 
+    
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: warfile
+          path: newartifact
+          
+      
