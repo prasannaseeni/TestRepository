@@ -20,7 +20,7 @@ jobs:
   Build:
 
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.dirname }} == 2.0."$GITHUB_RUN_NUMBER"
+    if: ${{ ${{ github.event.inputs.dirname }} == 2.0."$GITHUB_RUN_NUMBER" }}
        
  
 
