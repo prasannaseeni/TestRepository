@@ -13,7 +13,7 @@ on:
          required: true
          default: 2.0."$GITHUB_RUN_NUMBER"
 env:
-  input_version: 2.0."$GITHUB_RUN_NUMBER"
+  input_version: $GITHUB_RUN_NUMBER
    
 
 jobs:
