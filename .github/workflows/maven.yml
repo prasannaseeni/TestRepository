@@ -14,7 +14,7 @@ on:
        dirname:
          description: To get the directory name
          required: true
-         default: "${{ env.build_version }}"
+         default: Runner2
 
 jobs:
   Build:
@@ -66,5 +66,8 @@ jobs:
           
       - name: To create directory
         run: mkdir ${{ github.event.inputs.dirname }}"
+        
+      - name: To get env values
+        run: env
           
       
