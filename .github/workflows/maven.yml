@@ -91,10 +91,7 @@ jobs:
         with:
           name: devwarfile
           path: devartifact
-      
-      - name: To create directory
-        run: mkdir "${{ github.event.inputs.dirname }}"
-          
+               
        
       - name: To get env values
         run: env
