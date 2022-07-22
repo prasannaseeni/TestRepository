@@ -55,7 +55,8 @@ jobs:
     runs-on: Runner3
     environment: DEV
     needs: Build
-    
+    env:
+      env_new_version: ${{ secrets.new_version }}
     steps: 
     
       - name: Download artifact from build job
