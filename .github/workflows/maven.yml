@@ -120,8 +120,8 @@ jobs:
      - name: To create folder using secret
        run: mkdir /home/ubuntu/preprod/${{ secrets.DEV_VERSION }}
        
-     - name: To display dev version
-       run: echo "dev version is {{ env.dev_version }}"
+     - name: To display env variables
+       run: echo "dev version is ${{ env.dev_version }}"
         
        
      
