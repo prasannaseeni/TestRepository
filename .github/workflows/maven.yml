@@ -20,6 +20,8 @@ jobs:
   Build:
 
     runs-on: ubuntu-latest
+    env: 
+      build_version: ${{ secrets.BUILD_VERSION }}
           
  
     steps:
@@ -43,11 +45,22 @@ jobs:
     - name: To check the runners
       run: echo "Hello ${{ github.event.inputs.dirname }}"
       
-    - name: upload artifact for deployment job
-      uses: actions/upload-artifact@v3
+   # - name: upload artifact for deployment job
+   #   uses: actions/upload-artifact@v3
+   #   with:
+   #     name: warfile
+   #     path: single-module/GitHubActionsTesting
+   
+    - name: To alter secrets
+      uses: hmanzur/actions-set-secret@v2.0.0
       with:
-        name: warfile
-        path: single-module/GitHubActionsTesting
+        name: 'BUILD_VERSION'
+        value: $GITHUB_RUN_NUMBER
+        repository: prasannaseeni/TestRepository
+        token: ${{ secrets.REPO_ACCESS_TOKEN }}
+        
+    - name: To create folder using secret
+      run: mkdir /home/ubuntu/build/${{ secrets.BUILD_VERSION }}
         
         
   DeployToDev:
@@ -55,27 +68,41 @@ jobs:
     runs-on: Runner3
     environment: DEV
     needs: Build
+    env: 
+      dev_version: ${{ secrets.DEV_VERSION }}
     
     steps: 
     
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: warfile
-          path: buildartifact
+    #  - name: Download artifact from build job
+    #    uses: actions/download-artifact@v3
+    #    with:
+    #      name: warfile
+    #      path: buildartifact
       
-      - name: To create directory
-        run: mkdir "${{ github.event.inputs.dirname }}"
+    #  - name: To create directory
+    #    run: mkdir "${{ github.event.inputs.dirname }}"
           
        
       - name: To get env values
         run: env
         
-      - name: upload artifact for deployment job
-        uses: actions/upload-artifact@v3
+    #  - name: upload artifact for deployment job
+    #    uses: actions/upload-artifact@v3
+    #    with:
+    #      name: devwarfile
+    #     path: buildartifact/GitHubActionsTesting
+    
+      - name: To alter secrets
+        uses: hmanzur/actions-set-secret@v2.0.0
         with:
-          name: devwarfile
-          path: buildartifact/GitHubActionsTesting
+          name: 'DEV_VERSION'
+          value: $GITHUB_RUN_NUMBER
+          repository: prasannaseeni/TestRepository
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+      
+      - name: To create folder using secret
+        run: mkdir /home/ubuntu/dev/${{ secrets.DEV_VERSION }}
+    
  
  
   DeployToSIT:
@@ -83,6 +110,8 @@ jobs:
     runs-on: Runner3
     environment: SIT
     needs: DeployToDev
+    env: 
+      sit_version: ${{ secrets.SIT_VERSION }}
     
     steps: 
     
@@ -99,13 +128,13 @@ jobs:
       - name: To alter secrets
         uses: hmanzur/actions-set-secret@v2.0.0
         with:
-          name: 'DEV_VERSION'
+          name: 'SIT_VERSION'
           value: $GITHUB_RUN_NUMBER
           repository: prasannaseeni/TestRepository
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           
       - name: To create folder using secret
-        run: mkdir /home/ubuntu/sit/${{ secrets.DEV_VERSION }}
+        run: mkdir /home/ubuntu/sit/${{ secrets.SIT_VERSION }}
   
   DeployToPP:
   
@@ -116,9 +145,17 @@ jobs:
       dev_version: ${{ secrets.DEV_VERSION }}
     
     steps:
-    
+        
+     - name: To alter secrets
+       uses: hmanzur/actions-set-secret@v2.0.0
+       with:
+         name: 'PP_VERSION'
+         value: $GITHUB_RUN_NUMBER
+         repository: prasannaseeni/TestRepository
+         token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          
      - name: To create folder using secret
-       run: mkdir /home/ubuntu/preprod/${{ secrets.DEV_VERSION }}
+       run: mkdir /home/ubuntu/preprod/${{ secrets.PP_VERSION }}
        
      - name: To display env variables
        run: echo "dev version is ${{ env.dev_version }}"
