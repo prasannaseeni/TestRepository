@@ -59,9 +59,7 @@ jobs:
         repository: prasannaseeni/TestRepository
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
         
-    - name: To create folder using secret
-      run: mkdir /home/ubuntu/${{ secrets.BUILD_VERSION }}
-        
+            
         
   DeployToDev:
   
@@ -99,6 +97,9 @@ jobs:
           value: $GITHUB_RUN_NUMBER
           repository: prasannaseeni/TestRepository
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          
+      - name: To create folder using secret
+        run: mkdir /home/ubuntu/build/${{ secrets.BUILD_VERSION }}
       
       - name: To create folder using secret
         run: mkdir /home/ubuntu/dev/${{ secrets.DEV_VERSION }}
