@@ -116,11 +116,11 @@ jobs:
     
     steps: 
     
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: devwarfile
-          path: devartifact
+   #   - name: Download artifact from build job
+   #     uses: actions/download-artifact@v3
+   #     with:
+   #       name: devwarfile
+   #       path: devartifact
                
        
       - name: To get env values
