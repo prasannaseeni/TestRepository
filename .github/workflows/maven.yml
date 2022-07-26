@@ -106,6 +106,17 @@ jobs:
           
       - name: To create folder using secret
         run: mkdir /home/ubuntu/${{ secrets.DEV_VERSION }}
+  
+  DeployToPP:
+  
+    runs-on: Runner3
+    environment: PREPROD
+    needs: DeployToSIT
+    
+    steps:
+    
+     - name: To create folder using secret
+       run: mkdir /home/ubuntu/preprod/${{ secrets.DEV_VERSION }}
        
         
       
