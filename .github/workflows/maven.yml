@@ -105,7 +105,7 @@ jobs:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           
       - name: To create folder using secret
-        run: mkdir /home/ubuntu/${{ secrets.DEV_VERSION }}
+        run: mkdir /home/ubuntu/sit/${{ secrets.DEV_VERSION }}
   
   DeployToPP:
   
