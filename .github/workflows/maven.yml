@@ -112,11 +112,18 @@ jobs:
     runs-on: Runner3
     environment: PREPROD
     needs: DeployToSIT
+    env: 
+      dev_version: ${{ secrets.DEV_VERSION }}
     
     steps:
     
      - name: To create folder using secret
        run: mkdir /home/ubuntu/preprod/${{ secrets.DEV_VERSION }}
        
+     - name: To display dev version
+       run: echo "dev version is {{ env.dev_version }}"
+        
+       
+     
         
       
