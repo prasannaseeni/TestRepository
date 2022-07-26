@@ -102,6 +102,7 @@ jobs:
           name: 'DEV_VERSION'
           value: $GITHUB_RUN_NUMBER
           repository: prasannaseeni/TestRepository
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
           
       - name: To create folder using secret
         run: mkdir /home/ubuntu/${{ secrets.DEV_VERSION }}
